@@ -3,7 +3,6 @@
 Simple dameon Go program to automatically set your remote IP adress.
 
 It's an own alternative to others providers such as no-ip or dyndns.
-
 ## How to use it?
 
 Just put in your system init scripts.
@@ -29,5 +28,6 @@ aws_secret_access_key=<PUT-YOUR-SECRET-ACCESS-KEY>
 4. Set full path and environment variables
 You need to specify your credentials and AWS Region. For example: us-west-1
 ```
-AWS_REGION=us-west-1 /usr/local/bin/AWSmyIP
+./AWSmyIP -zoneID <zoneID> -recordSet <recordSet>
 ```
+TODO: create System Service script
