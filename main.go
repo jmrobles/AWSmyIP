@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+        "os"
 	"os/exec"
 	"strings"
 	"time"
@@ -104,6 +105,7 @@ func setIPinAWS(recordSetName string, ip string, zoneID string) bool {
 var zoneID *string
 var recordSet *string
 var noDaemon *bool
+var logFile *string
 var lastIP string
 
 const intervalSleep = 15 * time.Minute
@@ -113,11 +115,21 @@ func init() {
 	zoneID = flag.String("zoneID", "", "Zone ID")
 	recordSet = flag.String("recordSet", "", "Record Set")
 	noDaemon = flag.Bool("noDaemon", false, "No daemon flag")
+	logFile = flag.String("logFile", "", "If specified, logging in that path")
+
 }
 
 func main() {
 	log.Println("AWS Auto-update IP Remote Address")
 	flag.Parse()
+        if *logFile != "" {
+		f, err := os.OpenFile(*logFile, os.O_RDWR | os.O_CREATE | os.O_APPEND, 0666)
+		if err != nil {
+			log.Fatalf("error opening file: %v", err)
+		}
+		 defer f.Close()
+		log.SetOutput(f)
+	}
 	if *zoneID == "" {
 		log.Fatal("Need specify: zoneID")
 		return
