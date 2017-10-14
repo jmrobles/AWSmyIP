@@ -1,9 +1,10 @@
 # Daemon in Go to setup your DNS A Record in AWS Route 53
 ---
-Simple dameon Go program to automatically set your remote IP adress.
+Simple daemon Go program to automatically set your remote IP adress.
 
 It's an own alternative to others providers such as no-ip or dyndns.
-## How to use it?
+
+## How to use it?
 
 Just put in your system init scripts.
 
