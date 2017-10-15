@@ -31,4 +31,4 @@ You need to specify your credentials and AWS Region. For example: us-west-1
 ```
 ./AWSmyIP -zoneID <zoneID> -recordSet <recordSet>
 ```
-TODO: create System Service script
+5. To run as service in systemd, copy the ```awsmyip.service``` into ```/etc/systemd/system```. Modify the arguments to your needs.

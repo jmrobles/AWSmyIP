@@ -1,0 +1,12 @@
+[Unit]
+Description=AWSmyIP
+
+[Service]
+Type=notify
+Environment=AWS_SHARED_CREDENTIALS_FILE=/root/.aws/credentials
+ExecStart=/home/chema/gopath/bin/AWSmyIP -recordSet <your-record-set> -zoneID <your-zone-id> -logFile /var/log/awsmyip.log
+WatchdogSec=30s
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
